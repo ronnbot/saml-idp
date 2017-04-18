@@ -6,6 +6,8 @@ This app provides a simple Identity Provider (IdP) to test SAML 2.0 Service Prov
 
 ## Installation
 
+*Assuming node.js is already installed.*
+
 1. `npm install`
 2. `bower install`
 3. `openssl req -x509 -new -newkey rsa:2048 -nodes -subj '/C=US/ST=California/L=San Francisco/O=JankyCo/CN=Test Identity Provider' -keyout idp-private-key.pem -out idp-public-cert.pem -days 7300`
@@ -19,8 +21,10 @@ This app provides a simple Identity Provider (IdP) to test SAML 2.0 Service Prov
 Open `http://localhost:7000` in your browser to start an IdP initiated flow to your SP
 
 #### Example
+  
+Provided you're using SimpleSAMLphp as SP served at http://mysite.com/simplesaml with its metadata at  http://mysite.com/simplesaml/module.php/saml/sp/metadata.php/default-sp. Execute the following:
 
-  node app.js --acs https://foo.okta.com/auth/saml20/example --aud https://www.okta.com/saml2/service-provider/spf5aFRRXFGIMAYXQPNV
+  node app.js -p 7000 --acs http://mysite.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp --aud http://mysite.com/simplesaml/module.php/saml/sp/metadata.php/default-sp
 
 #### Options
 
